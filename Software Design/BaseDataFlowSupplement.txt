@@ -1,0 +1,52 @@
+WordShop - Editor Helper & Rhetorical Figure Generator - Data Flow Chart Supplement.
+(When viewing this file, please have the dataflow chart at an accessible location,
+ as this is just supplemental data.)
+
+Section 1.a:
+ A user will be able to choose which function will be applied to a string,
+ either through WordShop markup language in a text-editor or through a 
+ command-line function.
+
+ A function-declaration and input-string are mandatory for this step, which is why
+ they are color-coded red.
+
+ Optional parameters are adjustments that users can make to variables within the
+ choosen function to get different or "tweaked" results. If no optional parameters
+ are used, the function will use the default.
+
+ All these factors together will be later referred to as *production criteria*.
+
+Section 1.b:
+ The mapper will take the user's function-declaration, input string, and optional
+ params and create a data-struct which allows the algorithm to perform vector-mapping
+ on the input-string while still respecting user-preferences.
+
+ This struct will include:
+   - Function Selection
+   - Optional Parameters converted to readable format
+   - Linked-List of "chunks" which contain basic data about different parts
+     of the input-string (Plaintext string, Position, Phrase type, token length, etc)
+
+Section 2:
+ The variable-brainstormer will take a function-select, a linked-list of chunks,
+ and additional optional params and attempt to apply the editorial-effect to the
+ input-string. Rules for each editorial-effect is defined in the brainstormer and
+ the module will follow these rules and create lists for the best word/phrase to be
+ in each position (referred to as variable chunks).
+
+ This also means that the brainstormer may *add* or *remove* chunks if there is
+ a rule optimization for the editoral-effect, unless otherwise specified by user.
+
+ This linked-list of variable-chunks will be referred to as a *variable vector-map*.
+
+Section 3.a:
+ The analyzer will confirm that strings within the outtputed variable vector-map
+ conform to the language. In Wordshop, this will be done using an n-gram
+ implementation. The analyzer will go through the variable-chunks and "mix-and-match"
+ potential candidates to fill the phrase (due to n-gram, any invalid phrases will
+ be tossed).
+
+Section 3.b:
+ Depending on the amount of outputs the user requested, the analyzer will output the
+ highest scoring results (with the score next to the output). Scores are determined
+ by the n-gram probability of each word following the other.
